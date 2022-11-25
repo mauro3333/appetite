@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appetite Order Delivery</title>
+</head>
+
+<body>
+    <nav th:fragment="nav">
+        <header>
+            <ul>
+                <li>
+                    <a href="/" class="nav-link" aria-current="page">Home</a>
+                </li>
+            </ul>
+        </header>
+
+
+        <div>
+            <form action="/food/save" method="POST">
+                <fieldset>
+                    <legend>New Food</legend>
+
+                    <div>
+                        <label>Name: </label>
+                        <input type="text" placeholder="Type Name here!" th:field="${food.name}">
+                        <br>
+                        <br>
+                        <label>Ingredients: </label>
+                        <input type="text" placeholder="Type Ingredients here!" th:field="${food.ingredients}">
+                        <br>
+                        <br>
+                        <label>Calories: </label>
+                        <input type="number" placeholder="Type Calories here!" th:field="${food.calories}">
+                        <br>
+                        <br>
+                        <label>Price: </label>
+                        <input type="number" placeholder="Type Price here!" th:field="${food.price}">
+                        <br>
+                        <br>
+                        <label>Available: </label>
+                        <select th:field="${food.isAvailable}">
+                            <option th:value="Yes">Yes</option>
+                            <option th:value="No">No</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+                    <button type="submit">Create!</button>
+    
+                </fieldset>
+            </form>
+        </div>
+
+
+</body>
+
+</html>
