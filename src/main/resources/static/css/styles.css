@@ -76,7 +76,7 @@ body {
 /* Icons */
 
 .fas {
-  color: #f2f2f2;
+  color: #d0cece;
 }
 
 .fab {
@@ -148,16 +148,20 @@ body {
 
 .btn-get-read {
   height: 40px;
+  width: 200px;
   border: 1px solid #fff;
-  padding: 10px;
-  color: #000;
+  padding: 20px;
+  color: rgb(242, 18, 18);
   background-color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .btn-get-read:hover {
   border: 1px solid #000;
-  background-color: #000;
-  color: #f0f0f0;
+  background-color: rgb(235, 11, 11);
+  color: #e5e4e4;
   text-decoration: none;
 }
 
@@ -176,8 +180,9 @@ pre {
 /* Services */
 
 .services {
-  background-color: #000;
-  padding: 30px;
+  /* background-color: rgba(0, 0, 0, 0.787); */
+  background-color: rgba(90, 70, 0, 0.78);
+  padding: 50px;
 }
 
 .services .title {
@@ -220,6 +225,7 @@ pre {
 
 #contact {
   background-color: #dc3444;
+  padding: 30px;
 }
 .form {
   width: 40%;
@@ -228,6 +234,7 @@ pre {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  border-radius: 5px;
 }
 .form h1 {
   text-align: center;
