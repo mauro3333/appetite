@@ -95,7 +95,9 @@ body {
   color: #a5a5a5;
 }
 
-* Carousel */ #section-carousel {
+/* Carousel */
+
+#section-carousel {
   width: 100%;
   height: calc(100vh - 2px);
   padding: 0;

@@ -22,87 +22,59 @@
             </ul>
         </header>
 
-
         <form action="/order/save" method="POST" th:object="${order}">
-    <fieldset>
-        <input type="submit" id="submitButton" th:value="Save">
-        <br>
-        <br>
-        <label>Cient Id: </label>
-        <input type="number" th:field="${order.clientId}">
-        <br>
-        <br>
+            <fieldset>
+                <input type="submit" id="submitButton" th:value="Save">
+                <br>
+                <br>
+                <label>Cient Id: </label>
+                <input type="number" th:field="${order.clientId}">
+                <br>
+                <br>
 
 
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Calories</th>
-                <th>ingredients</th>
-            </tr>
-        </thead>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Calories</th>
+                            <th>ingredients</th>
+                        </tr>
+                    </thead>
 
-            <tr th:each="food, iStat : ${foods}">
-                <td><span th:text="${food.name}" th:value="${food.name}">name</span> </td>
-                <!-- <td th:text="${food.name}"/> -->
-                <td th:text="${food.price}"/>
-                <td th:text="${food.quantity}"/>
-                <td th:text="${food.calories}"/>
-                <td th:text="${food.ingredients}"/>
-                <td th:text="${iStat.index}"/>
-                <!-- <td><input type="number" th:field="${food.qusntity}"/></td> -->
-                <!-- <input type="number" placeholder="Type Price here!" th:field="${food.price}"> -->
-            </tr>
-    
-    </table>
+                    <tr th:each="food, iStat : ${foods}">
+                        <td><span th:text="${food.name}" th:value="${food.name}">name</span> </td>
+                        <!-- <td th:text="${food.name}"/> -->
+                        <td th:text="${food.price}" />
+                        <td th:text="${food.quantity}" />
+                        <td th:text="${food.calories}" />
+                        <td th:text="${food.ingredients}" />
+                        <td th:text="${iStat.index}" />
+                        <!-- <td><input type="number" th:field="${food.qusntity}"/></td> -->
+                        <!-- <input type="number" placeholder="Type Price here!" th:field="${food.price}"> -->
+                    </tr>
 
-    <br>
-    <br>
-    <br>   
-    <select multiple name="" id="" class="form-control" th:field="*{foods}">
-        <option th:each="food : ${foods}" th:value="${food.foodId}"
-            th:text="${food.name}"></option>
+                </table>
 
-        </option>
-    </select>
+                <br>
+                <br>
+                <br>
+                <select multiple name="" id="" class="form-control" th:field="*{foods}">
+                    <option th:each="food : ${foods}" th:value="${food.foodId}" th:text="${food.name}"></option>
 
-
+                    </option>
+                </select>
 
 
 
-</fieldset>
-</form>
+
+
+            </fieldset>
+        </form>
 
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
