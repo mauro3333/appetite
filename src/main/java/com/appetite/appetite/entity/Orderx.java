@@ -16,6 +16,7 @@ public class Orderx {
 
     private Long clientId;
 	private String status;
+	private Long employeeId;
 
 
 
@@ -47,5 +48,13 @@ public class Orderx {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Long getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
 	}
 }

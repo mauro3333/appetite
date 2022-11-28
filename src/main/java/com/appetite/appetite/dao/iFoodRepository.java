@@ -13,7 +13,7 @@ public interface iFoodRepository extends JpaRepository<Food, Long> {
     @Override
     public List<Food> findAll();
 
-    @Query("SELECT x FROM Food x WHERE foodId = ?1") //clientId
+    @Query("SELECT x FROM Food x WHERE foodId = ?1")
     public Food findByFoodId(Long foodId);
 
 }
