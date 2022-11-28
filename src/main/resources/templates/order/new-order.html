@@ -17,92 +17,77 @@
         <header>
             <ul>
                 <li>
-                    <a href="/" class="nav-link" aria-current="page">Home</a>
+                    <a href="/home" class="nav-link" aria-current="page">Home</a>
                 </li>
             </ul>
         </header>
 
 
-        <form action="/order/save" method="POST" th:object="${order}">
-    <fieldset>
-        <input type="submit" id="submitButton" th:value="Save">
-        <br>
-        <br>
-        <label>Cient Id: </label>
-        <input type="number" th:field="${order.clientId}">
-        <br>
-        <br>
+        <form action="/order/add" method="POST" th:object="${orderDetail}">
+            <fieldset>
+                <select name="" id="" th:field="${orderDetail.foodId}">
+                    <option th:each="food, count : ${foods}" th:value="${food.foodId}" th:text="${food.name}"></option>
+
+                    </option>
+                    <input type="number" value="1" min="1" th:field="${orderDetail.quantity}" />
+                    <input type="submit" id="submitButton" th:value="Add" onclick="subTotal()">
+                </select>
+
+            </fieldset>
+        </form>
 
 
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Calories</th>
-                <th>ingredients</th>
-            </tr>
-        </thead>
+        <form action="/order/save" method="POST" th:object="${orderx}">
+            <fieldset>
 
-            <tr th:each="food, iStat : ${foods}">
-                <td><span th:text="${food.name}" th:value="${food.name}">name</span> </td>
-                <!-- <td th:text="${food.name}"/> -->
-                <td th:text="${food.price}"/>
-                <td th:text="${food.quantity}"/>
-                <td th:text="${food.calories}"/>
-                <td th:text="${food.ingredients}"/>
-                <td th:text="${iStat.index}"/>
-                <!-- <td><input type="number" th:field="${food.qusntity}"/></td> -->
-                <!-- <input type="number" placeholder="Type Price here!" th:field="${food.price}"> -->
-            </tr>
-    
-    </table>
+                <table>
 
-    <br>
-    <br>
-    <br>   
-    <select multiple name="" id="" class="form-control" th:field="*{foods}">
-        <option th:each="food : ${foods}" th:value="${food.foodId}"
-            th:text="${food.name}"></option>
-
-        </option>
-    </select>
+                    <tr>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>subTotal</th>
+                    </tr>
 
 
+                    <tr th:each="order, x : ${ordersD}">
+                        <td th:text="${order.foodName}" />
+                        <td th:text="${order.quantity}" />
+                        <td th:text="${order.price}" />
+                        <td th:text="${order.subTotal}" />
+                    </tr>
+                </table>
+
+
+                <br>
+                <br>
+                <div>
+                    <label>TOTAL: </label>
+                    <th th:text="${totalprice}"></th>
+                    <br>
+                    <br>
+                </div>
+                
+
+                <input type="submit" id="submitButton" th:value="Save">
+                <br>
+                <br>
+            </fieldset>
 
 
 
-</fieldset>
-</form>
+        </form>
+
+        <form action="/order/reset" method="POST">
+            <fieldset>
+                <br>
+                <br>
+                <input type="submit" id="submitButton" th:value="Reset">
+
+            </fieldset>
+        </form>
 
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

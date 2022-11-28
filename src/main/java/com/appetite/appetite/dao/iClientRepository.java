@@ -14,4 +14,7 @@ public interface iClientRepository extends JpaRepository<Client, Long> {
     // generic type
     public List<Client> findAll();
 
+    public Client findByclientId(Long clienId);
+
+
 }
