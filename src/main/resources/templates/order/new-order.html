@@ -1,116 +1,91 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="Java Sring project" />
-    <meta name="author" content="Geraldine Hernandez, Diego Polinia" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-        crossorigin="anonymous" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <title>Apetite Order Delivery</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <title>Appetite Order Delivery</title>
 </head>
 
 <body>
-
-    <!-- header -->
-    <header id="header">
-        <section class="bg-light d-flex header">
-            <div class="container-fluid ml-2 mt-3 d-flex justify-content-between">
-                <div class=" d-flex p-2 ">
-                    <a class="navbar-brand" href="https://github.com/mauro3333/appetite_order_delivery_management">
-                        <img src="/img/Appetite.png" alt="appetite" srcset="/img/Appetite.png" />
-                    </a>
-                </div>
-
-                <div>
-                    <nav class="nav-menu m-0 float-right d-sm-block navbar navbar-expand-lg"
-                        id="navbarSupportedContent">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <ul>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <li class="drop-down">
-                                    <a class="active nav-link text-uppercase text-danger fs-4 fw-bold" href="/home">
-                                        <u> home </u>
-                                    </a>
-                                </li>
-                            </div>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </section>
-    </header>
+    <nav th:fragment="nav">
+        <header>
+            <ul>
+                <li>
+                    <a href="/home" class="nav-link" aria-current="page">Home</a>
+                </li>
+            </ul>
+        </header>
 
 
-
-
-
-    <!-- templates -->
-    <!-- https://mdbootstrap.com/docs/standard/extended/order-details/ -->
-
-    <form action="/order/save" method="POST" th:object="${order}">
-        <fieldset>
-            <input type="submit" id="submitButton" th:value="Save">
-            <br>
-            <br>
-            <label>Cient Id: </label>
-            <input type="number" th:field="${order.clientId}">
-            <br>
-            <br>
-
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Calories</th>
-                        <th>ingredients</th>
-                    </tr>
-                </thead>
-
-                <tr th:each="food, iStat : ${foods}">
-                    <td><span th:text="${food.name}" th:value="${food.name}">name</span> </td>
-
-                    <td th:text="${food.price}" />
-                    <td th:text="${food.quantity}" />
-                    <td th:text="${food.calories}" />
-                    <td th:text="${food.ingredients}" />
-                    <td th:text="${iStat.index}" />
-                    <!-- <td><input type="number" th:field="${food.qusntity}"/></td> -->
-                    <!-- <input type="number" placeholder="Type Price here!" th:field="${food.price}"> -->
-                </tr>
-
-            </table>
-
-            <br>
-            <br>
-            <br>
-            <!-- <select multiple name="" id="" class="form-control" th:field="*{foods}">
-                    <option th:each="food : ${foods}" th:value="${food.foodId}" th:text="${food.name}"></option>
+        <form action="/order/add" method="POST" th:object="${orderDetail}">
+            <fieldset>
+                <select name="" id="" th:field="${orderDetail.foodId}">
+                    <option th:each="food, count : ${foods}" th:value="${food.foodId}" th:text="${food.name}"></option>
 
                     </option>
-                </select> -->
+                    <input type="number" value="1" min="1" th:field="${orderDetail.quantity}" />
+                    <input type="submit" id="submitButton" th:value="Add" onclick="subTotal()">
+                </select>
+
+            </fieldset>
+        </form>
+
+
+        <form action="/order/save" method="POST" th:object="${orderx}">
+            <fieldset>
+
+                <table>
+
+                    <tr>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>subTotal</th>
+                    </tr>
+
+
+                    <tr th:each="order, x : ${ordersD}">
+                        <td th:text="${order.foodName}" />
+                        <td th:text="${order.quantity}" />
+                        <td th:text="${order.price}" />
+                        <td th:text="${order.subTotal}" />
+                    </tr>
+                </table>
+
+
+                <br>
+                <br>
+                <div>
+                    <label>TOTAL: </label>
+                    <th th:text="${totalprice}"></th>
+                    <br>
+                    <br>
+                </div>
+
+
+                <input type="submit" id="submitButton" th:value="Save">
+                <br>
+                <br>
+            </fieldset>
 
 
 
+        </form>
 
+        <form action="/order/reset" method="POST">
+            <fieldset>
+                <br>
+                <br>
+                <input type="submit" id="submitButton" th:value="Reset">
 
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
 
 
 </body>

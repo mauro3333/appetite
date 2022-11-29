@@ -10,21 +10,33 @@ Is a CRUD application FullStack project to manage order delivery food recipe.
 
 1. CRUD Application
 
+Customers:
+
 - Create users
-- Update users
-- Delete users
 - Create employees
-- Update employees
-- Delete employees
+- Register
+- Login
 - Create menu
 - Update menu
 - Get all menus
-- Deletw menu
+- Delete menu
+
+Admin Side:
+
+- Create Admin
+- Login
 
 # Tools
 
-Technologies: Java Project application created with spring Framework
-Database: PostgrSQL Database
+Technologies:
+
+1. Java Project application
+2. spring Framework
+3. Database: PostgrSQL Database
+4. HTML5
+5. CSS3
+6. Bootstrap
+7. Fontawesome
 
 # Clone this project
 
