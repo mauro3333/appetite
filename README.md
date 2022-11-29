@@ -8,6 +8,19 @@ Order Delivery Management System
 Appetite is a web application created with Java and Spring to solve the problem of delivery healthy food in a low price, with _Appetite you can have any healthy food in no time_.
 Is a CRUD application FullStack project to manage order delivery food recipe.
 
+Project Management:
+
+- Trello
+- WhatsApp
+- Didcord
+- Google Docs
+- Slack
+
+Design UI:
+Figma
+
+Web Development Project:
+
 1. CRUD Application
 
 Customers:
@@ -26,7 +39,7 @@ Admin Side:
 - Create Admin
 - Login
 
-# Tools
+# Tech Tools
 
 Technologies:
 
