@@ -18,7 +18,7 @@ import com.appetite.appetite.entity.Client;
 import com.appetite.appetite.entity.Food;
 import com.appetite.appetite.entity.OrderDetail;
 import com.appetite.appetite.entity.Orderx;
-
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -31,7 +31,6 @@ public class ClientController {
 
 	Client checkCliend = new Client();
 	Client clientAddress = new Client();
-
 
 	@Autowired
 	iOrderRepository orderRepository;
@@ -75,7 +74,7 @@ public class ClientController {
 	}
 
 	// -------------------------------------------------------------------------
-	
+
 	@PostMapping("/check")
 	public String checkClient(Client client) {
 		checkCliend = clientCheckRepository.findByEmailAndPassword(client.getEmail(), client.getPassword());
@@ -108,6 +107,7 @@ public class ClientController {
 	public String addOrder(OrderDetail orderDetails) {
 
 		Food food = foodRepository.findByFoodId(orderDetails.getFoodId());
+		System.out.println("que es food" + food);
 		orderDetails.setPrice(food.getPrice());
 		orderDetails.setFoodName(food.getName());
 		orderDetails.setSubTotal(food.getPrice() * orderDetails.getQuantity());
@@ -122,7 +122,7 @@ public class ClientController {
 		Orderx order = new Orderx(checkCliend.getClientId(), "New");
 		orderRepository.save(order);
 		Orderx orderLast = orderRepository.findFirstByOrderByOrderxIdDesc();
-		
+
 		for (OrderDetail x : orderDetailX) {
 			x.setOrderId(orderLast.getOrderxId());
 			orderDetailRepository.save(x);
@@ -138,6 +138,7 @@ public class ClientController {
 		totalPrice = 0.0;
 		return "redirect:/order/new";
 	}
+
 	// -------------------------------------------------------------------------
 	@GetMapping("/order/summary")
 	public String summaryOrder(Model model) {
@@ -145,12 +146,10 @@ public class ClientController {
 		clientAddress = clientRepository.findByclientId(checkCliend.getClientId());
 		model.addAttribute("address", clientAddress);
 
-
 		orderDetailX.clear();
 		totalPrice = 0.0;
 		return "order/summary-order";
 	}
-
 
 	// -------------------------------------------------------------------------
 
