@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
 public class Client {
 	@Id // Makes the primary key
@@ -21,6 +20,7 @@ public class Client {
 	private String address;
 	private String methodOfPayment;
 
+
 	public Client() {
 	}
 
@@ -33,6 +33,7 @@ public class Client {
 		this.address = address;
 		this.methodOfPayment = methodOfPayment;
 	}
+
 
 	public Long getClientId() {
 		return clientId;
