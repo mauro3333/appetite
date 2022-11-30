@@ -1,6 +1,5 @@
 package com.appetite.appetite.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,5 +28,5 @@ public class FoodController {
         foodRepository.save(food);
         return "redirect:/food/new";
     }
-    
+
 }
